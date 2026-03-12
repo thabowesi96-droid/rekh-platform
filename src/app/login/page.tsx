@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Shield, BarChart3, Globe, PenTool, SearchCode, Gavel } from 'lucide-react';
 import { auth, provider } from '../../lib/firebase';
-import { signInWithPopup } from 'firebase/auth';
+import { signInWithRedirect } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
@@ -12,12 +12,9 @@ export default function Home() {
 
   const handleLogin = async () => {
     try {
-      const result = await signInWithPopup(auth, provider);
-      if (result.user) {
-        router.push('/dashboard');
-      }
+      await signInWithRedirect(auth, provider);
     } catch (error) {
-      console.error("Executive Suite Access Error:", error);
+      console.error(error);
     }
   };
 
