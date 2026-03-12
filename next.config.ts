@@ -9,13 +9,13 @@ const nextConfig: NextConfig = {
   },
   images: {
     remotePatterns: [
-      { protocol: 'https', hostname: 'placehold.co', port: '', pathname: '/**' },
+      { protocol: 'https', hostname: 'placeholder.co', port: '', pathname: '/**' },
       { protocol: 'https', hostname: 'images.unsplash.com', port: '', pathname: '/**' },
       { protocol: 'https', hostname: 'picsum.photos', port: '', pathname: '/**' },
     ],
   },
   output: 'standalone',
-  // Fixed: This is a top-level property now, not inside 'experimental'
+  // MOVED OUT OF EXPERIMENTAL: This is now a top-level property
   serverExternalPackages: ['genkit', '@genkit-ai/google-genai'],
   
   async headers() {
