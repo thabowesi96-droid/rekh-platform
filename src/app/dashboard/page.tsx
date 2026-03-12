@@ -1,6 +1,6 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Activity, Plus, FileText, TrendingUp, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Activity, Plus, FileText, TrendingUp, AlertCircle, CheckCircle2, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 
 export default function DashboardPage() {
@@ -12,7 +12,7 @@ export default function DashboardPage() {
           <p className="text-muted-foreground">Welcome back to Rekh. Your council of agents is ready for coordination.</p>
         </div>
         <Link href="/dashboard/generate">
-          <Button className="bg-accent hover:bg-accent/90 gap-2 px-6 h-12">
+          <Button className="bg-accent hover:bg-accent/90 gap-2 px-6 h-12 text-white border-none">
             <Plus className="w-5 h-5" />
             New Strategic Plan
           </Button>
