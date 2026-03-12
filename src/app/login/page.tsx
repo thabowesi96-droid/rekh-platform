@@ -1,4 +1,4 @@
-'use client';
+// v2.0'use client';
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';

@@ -2,12 +2,12 @@ import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB...", // Your actual keys are handled by the environment
-  authDomain: "rekh-platform.firebaseapp.com",
-  projectId: "rekh-platform",
-  storageBucket: "rekh-platform.firebasestorage.app",
-  messagingSenderId: "4529311713",
-  appId: "1:4529311713:web:..."
+  apiKey: process.env.NEXT_PUBLIC_REKH_FINAL_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
 };
 
 // Initialize Firebase
