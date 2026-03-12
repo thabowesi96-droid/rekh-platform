@@ -1,5 +1,11 @@
-{
-  "apphosting": {
-    "rootDirectory": "."
-  }
-}
+kind: AppHostingBackend
+schemaVersion: v1
+environmentVariables:
+  - variable: NEXT_PUBLIC_FIREBASE_API_KEY
+    value: AIzaSyAE-feV__BhWcDPIlsJ8dECuuHQSib2gok
+  - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    value: rekh-platform.firebaseapp.com
+  - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    value: rekh-platform
+  - variable: NEXT_PUBLIC_FIREBASE_APP_ID
+    value: 1:830823380682:web:9699bed5824f2e07266633
