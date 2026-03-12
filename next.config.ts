@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
     ],
   },
   output: 'standalone',
-  // Fixed the error from your image by moving this out of experimental
+  // Fixed: This is a top-level property now, not inside 'experimental'
   serverExternalPackages: ['genkit', '@genkit-ai/google-genai'],
   
   async headers() {
