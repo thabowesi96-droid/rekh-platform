@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Shield, BarChart3, Globe, PenTool, SearchCode, Gavel } from 'lucide-react';
-import { auth, provider } from '../../../lib/firebase';
+import { auth, provider } from '../../lib/firebase';
 import { signInWithPopup } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 
