@@ -5,6 +5,7 @@ export default function Gatekeeper({ params }: { params: { id: string } }) {
   const [pin, setPin] = useState(['', '', '', '', '']);
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [error, setError] = useState(false);
+  const [attempts, setAttempts] = useState(0);
 
   const handleInput = (val: string, index: number) => {
     if (isNaN(Number(val))) return;
