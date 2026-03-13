@@ -28,6 +28,10 @@ export default function OwnerDashboard() {
           </nav>
         </div>
         <Navigation />
+      {/* Mobile Handshake Trigger */}
+      <div className='md:hidden p-4 border-b border-zinc-900'>
+        <QRHandshake projectId='772-PRO' pin='88291' />
+      </div>
       </header>
 
       <main className="p-8 max-w-6xl mx-auto w-full">
