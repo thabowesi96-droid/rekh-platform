@@ -2,10 +2,10 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: true, // Prevents small type mismatches from killing the build
   },
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: true, // Ensures linting doesn't block deployment
   },
   images: {
     remotePatterns: [
@@ -15,7 +15,6 @@ const nextConfig: NextConfig = {
     ],
   },
   output: 'standalone',
-  // MOVED OUT OF EXPERIMENTAL: This is now a top-level property
   serverExternalPackages: ['genkit', '@genkit-ai/google-genai'],
   
   async headers() {
@@ -25,7 +24,9 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Cross-Origin-Opener-Policy',
-            value: 'same-origin-allow-popups',
+            // Changed to unsafe-none temporarily to ensure the Firebase Auth popup 
+            // has zero friction with the new API key handshake.
+            value: 'unsafe-none', 
           },
         ],
       },
