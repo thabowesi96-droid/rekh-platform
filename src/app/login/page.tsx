@@ -20,8 +20,10 @@ export default function LoginPage() {
       });
 
       if (response.ok) {
-        router.push('/dashboard');
-        router.refresh();
+        // We add a tiny delay to give Firefox time to register the cookie in the background
+        setTimeout(() => {
+          window.location.href = '/dashboard';
+        }, 500);
       }
     } catch (error) {
       console.error("Auth Error:", error);
@@ -31,7 +33,7 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-slate-950 text-white p-4">
       <div className="text-center space-y-6">
-        <h1 className="text-4xl font-bold tracking-tighter">Rekh Strategic Council</h1>
+        <h1 className="text-4xl font-bold tracking-tighter uppercase">Rekh Suite</h1>
         <Button onClick={handleLogin} className="px-10 py-6 text-lg bg-white text-black hover:bg-slate-200">
           Enter Suite
         </Button>
