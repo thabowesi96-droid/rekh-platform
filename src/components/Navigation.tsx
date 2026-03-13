@@ -10,7 +10,7 @@ export default function Navigation() {
     { label: 'New Model', href: '/models/new' },
     { label: 'Document Vault', href: '/vault' },
     { label: 'Sent Links', href: '/dashboard?tab=tracking' },
-    { label: 'Settings', href: '/settings' },
+    { label: 'Profile', href: '/profile' },
   ];
 
   return (
