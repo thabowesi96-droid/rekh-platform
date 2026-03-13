@@ -9,3 +9,8 @@ environmentVariables:
     value: rekh-platform
   - variable: NEXT_PUBLIC_FIREBASE_APP_ID
     value: 1:830823380682:web:9699bed5824f2e07266633
+env:
+  - variable: REKH_MASTER_PASSCODE
+    secret: REKH_MASTER_PASSCODE
+  - variable: REKH_OBSERVER_PASSCODE
+    secret: REKH_OBSERVER_PASSCODE
