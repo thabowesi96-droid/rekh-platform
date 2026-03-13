@@ -2,40 +2,47 @@
 
 import { Button } from '@/components/ui/button';
 import { auth, provider } from '../../lib/firebase';
-import { signInWithPopup } from 'firebase/auth';
-import { useRouter } from 'next/navigation';
+import { signInWithRedirect, getRedirectResult } from 'firebase/auth';
+import { useEffect } from 'react';
 
 export default function LoginPage() {
-  const router = useRouter();
-
-  const handleLogin = async () => {
-    try {
-      const result = await signInWithPopup(auth, provider);
-      const idToken = await result.user.getIdToken();
-
-      const response = await fetch('/api/auth', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ idToken }),
-      });
-
-      if (response.ok) {
-        // We add a tiny delay to give Firefox time to register the cookie in the background
-        setTimeout(() => {
-          window.location.href = '/dashboard';
-        }, 500);
+  
+  useEffect(() => {
+    // This checks if we just returned from Google
+    const checkRedirect = async () => {
+      try {
+        const result = await getRedirectResult(auth);
+        if (result) {
+          const idToken = await result.user.getIdToken();
+          const response = await fetch('/api/auth', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ idToken }),
+          });
+          if (response.ok) {
+            window.location.href = '/dashboard';
+          }
+        }
+      } catch (error) {
+        console.error("Redirect Auth Error:", error);
       }
-    } catch (error) {
-      console.error("Auth Error:", error);
-    }
+    };
+    checkRedirect();
+  }, []);
+
+  const handleLogin = () => {
+    signInWithRedirect(auth, provider);
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-950 text-white p-4">
-      <div className="text-center space-y-6">
-        <h1 className="text-4xl font-bold tracking-tighter uppercase">Rekh Suite</h1>
-        <Button onClick={handleLogin} className="px-10 py-6 text-lg bg-white text-black hover:bg-slate-200">
-          Enter Suite
+    <div className="flex min-h-screen items-center justify-center bg-black text-white p-4">
+      <div className="text-center space-y-8">
+        <h1 className="text-5xl font-extrabold tracking-tighter uppercase italic">Rekh Suite</h1>
+        <Button 
+          onClick={handleLogin} 
+          className="px-12 py-8 text-2xl bg-white text-black hover:bg-zinc-200 font-bold"
+        >
+          ENTER SUITE
         </Button>
       </div>
     </div>
