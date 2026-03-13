@@ -3,9 +3,10 @@ import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import DealCRM from '@/components/dashboard/DealCRM';
 import AuditLog from '@/components/dashboard/AuditLog';
+import QRHandshake from '@/components/sharing/QRHandshake';
 
 export default function OwnerDashboard() {
-  const [activeTab, setActiveTab] = useState('portfolio'); // portfolio | feed
+  const [activeTab, setActiveTab] = useState('portfolio');
 
   return (
     <div className="min-h-screen bg-black text-white font-sans">
@@ -28,17 +29,16 @@ export default function OwnerDashboard() {
           </nav>
         </div>
         <Navigation />
-      {/* Mobile Handshake Trigger */}
-      <div className='md:hidden p-4 border-b border-zinc-900'>
-        <QRHandshake projectId='772-PRO' pin='88291' />
-      </div>
       </header>
 
       <main className="p-8 max-w-6xl mx-auto w-full">
         {activeTab === 'portfolio' ? (
           <div className="space-y-8 animate-in fade-in duration-500">
-            {/* ... Existing Project List Logic ... */}
-            <p className="text-zinc-500 text-xs italic">Select a model to view specific project analytics.</p>
+             {/* Mobile Handshake Trigger */}
+            <div className='md:hidden p-4 border-2 border-dashed border-zinc-800 mb-8'>
+               <QRHandshake projectId="772-PRO" pin="88291" />
+            </div>
+            <p className="text-zinc-500 text-xs italic uppercase tracking-widest font-bold">Sovereign Portfolio Active</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-in slide-in-from-right duration-500">
