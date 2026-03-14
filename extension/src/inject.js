@@ -1,8 +1,9 @@
 const FIELD_MAP = {
   "idc.co.za": {
-    "txtProjectName": "projectName",
-    "numJobsCreated": "jobsCount",
-    "txtCapexTotal": "totalFunding"
+    "ctl00_ContentPlaceHolder1_txtShareholder": "ownerName",
+    "input_total_funding_req": "totalFunding",
+    "textarea_employment_impact": "jobNarrative",
+    "ddlSectorSelect_v2": "sectorCode"
   },
   "nef.org.za": {
     "company_name": "projectName",
@@ -20,7 +21,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         const field = document.getElementById(htmlId) || document.querySelector(`[name="${htmlId}"]`);
         if (field && request.payload[dataKey]) {
           field.value = request.payload[dataKey];
-          field.style.border = "2px solid #0055ff";
+          // The Rekh Signature: Visual Confirmation of Sovereign Control
+          field.style.border = "3px solid #0055ff";
+          field.style.boxShadow = "0 0 10px rgba(0, 85, 255, 0.5)";
           field.dispatchEvent(new Event('input', { bubbles: true }));
         }
       });
