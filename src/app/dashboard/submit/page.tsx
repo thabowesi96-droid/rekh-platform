@@ -23,6 +23,7 @@ export default function SubmissionBridge() {
             >
               <option value="IDC">IDC Portal (Direct Mapping)</option>
               <option value="NEF">NEF Application (Document Morph)</option>
+              <option value="BIC_COMMITTEE">BIC Specialist Review</option>
               <option value="SEFA">SEFA Small Biz (Asset Map)</option>
               <option value="CUSTOM">Upload Screenshot/PDF for OCR</option>
             </select>

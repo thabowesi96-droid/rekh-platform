@@ -1,17 +1,12 @@
 export const FUNDER_SCHEMA = {
-  IDC_PORTAL: {
-    fields: ["Company Registration", "Lead Applicant", "SARS Tax Pin", "Project DSCR"],
+  IDC_PORTAL: { /* ... existing ... */ },
+  BIC_COMMITTEE: {
+    fields: ["Localization %", "Energy Efficiency Index", "Off-take Certainty", "SLA Reliability"],
     mapping: (data: any) => ({
-      "Lead Applicant": data.owner.name,
-      "Project DSCR": data.metrics.dscr >= 1.2 ? "PASS" : "FAIL",
-      "Job Impact": `${data.metrics.jobs} Permanent Positions`
-    })
-  },
-  SEFA_MSME: {
-    fields: ["Bank Confirmation", "Asset Quotations", "Monthly Net Income"],
-    mapping: (data: any) => ({
-      "Asset Assist": `R ${data.finances.capex.toLocaleString()}`,
-      "Ownership": "100% Black Owned"
+      "Localization %": "68% (Local Equipment + Labor)",
+      "Energy Efficiency Index": "Tier-2 Hybrid Solar Integrated",
+      "Off-take Certainty": "3 Retailer LOIs attached to Vault",
+      "SLA Reliability": "36-Month On-Site Service Level Guarantee"
     })
   }
 };
