@@ -1,11 +1,20 @@
 {
   "manifest_version": 3,
   "name": "Rekh Sovereign Bridge",
-  "version": "1.0.0",
+  "version": "1.2.0",
+  "action": {
+    "default_popup": "src/popup.html"
+  },
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": ["tabs", "notifications", "storage", "activeTab", "scripting"],
+  "permissions": [
+    "tabs", 
+    "notifications", 
+    "storage", 
+    "scripting", 
+    "activeTab"
+  ],
   "host_permissions": [
     "https://*.idc.co.za/*",
     "https://*.nef.org.za/*",
@@ -16,8 +25,5 @@
       "matches": ["https://*.idc.co.za/*", "https://*.nef.org.za/*"],
       "js": ["src/inject.js"]
     }
-  ],
-  "action": {
-    "default_popup": "src/popup.html"
-  }
+  ]
 }
