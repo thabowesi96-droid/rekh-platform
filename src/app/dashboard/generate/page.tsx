@@ -6,7 +6,7 @@ export default function StrategyLab() {
   const [directive, setDirective] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [history, setHistory] = useState([
-    { role: 'ai', text: 'Council is online. I am your Lead Researcher. To begin Stage 1 (Discovery), please describe the core objective of your venture.' }
+    { role: 'ai', text: 'Council is online [v1.0.4-LIVE]. I am your Lead Researcher. To begin Stage 1 (Discovery), please describe the core objective of your venture.' }
   ]);
 
   const stages = [
