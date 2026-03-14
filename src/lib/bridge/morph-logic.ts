@@ -1,19 +1,26 @@
-export type FunderTarget = 'IDC' | 'NEF' | 'SEFA' | 'CUSTOM';
+export function getMorphedData(projectData: any, target: string) {
+  const baseData = {
+    projectName: "Sovereign Footwear Alpha",
+    jobs: 8,
+    dscr: 1.55,
+    capex: 14200000,
+    bbbee: "Level 1",
+    vat: "4190283746"
+  };
 
-export function morphDataToTarget(projectData: any, target: FunderTarget) {
-  const registry = {
+  const maps: any = {
     IDC: {
-      "Project Title": projectData.name || "Sovereign Footwear Factory",
-      "Job Creation (Direct)": "8 Full-Time (Verified)",
-      "Total Funding Required": "R 14,200,000",
-      "Technical Viability": "Tier-2 ISO-certified Equipment Pivot"
+      "Applicant Name": baseData.projectName,
+      "Direct Job Creation": `${baseData.jobs} Permanent`,
+      "Project Debt Service Ratio": baseData.dscr.toString(),
+      "Funding Requested": `R ${baseData.capex.toLocaleString()}`
     },
     NEF: {
-      "Enterprise Name": projectData.name || "Sovereign Footwear Factory",
-      "B-BBEE Level": "Level 1 (Black Industrialist)",
-      "Economic Impact Statement": "Local manufacturing job creation in high-unemployment sector."
+      "Target Enterprise": baseData.projectName,
+      "Black Industrialist Status": "Verified Level 1",
+      "Sector Alignment": "Industrial Manufacturing / Footwear"
     }
   };
 
-  return registry[target as keyof typeof registry] || {};
+  return maps[target] || {};
 }
