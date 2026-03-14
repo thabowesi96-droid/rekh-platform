@@ -1,10 +1,13 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export function middleware(request: NextRequest) {
-  const hardwareKey = request.cookies.get('rekh_hardware_token');
+const AUTH_PIN = "22733";
 
-  if (!hardwareKey && !request.nextUrl.pathname.startsWith('/login')) {
+export function middleware(request: NextRequest) {
+  const session = request.cookies.get('rekh_session');
+  const { pathname } = request.nextUrl;
+
+  if (pathname.startsWith('/dashboard') && !session) {
     return NextResponse.redirect(new URL('/login', request.url));
   }
 
@@ -12,5 +15,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  matcher: ['/dashboard/:path*'],
 };
