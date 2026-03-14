@@ -1,8 +1,16 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function DashboardPage() {
-  const [status, setStatus] = useState('Active');
+  const [input, setInput] = useState('');
+  const [feed, setFeed] = useState(['[SYSTEM] Orchestration Engine Online.', '[SYSTEM] Waiting for operator directive...']);
+
+  const handleCommand = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input) return;
+    setFeed(prev => [...prev, `> ${input}`, `[AI] Directive received. Processing "${input}"...`]);
+    setInput('');
+  };
 
   return (
     <div className="p-8 font-mono text-white">
@@ -10,31 +18,28 @@ export default function DashboardPage() {
         <h1 className="text-2xl font-black uppercase italic tracking-tighter">Command Center</h1>
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
-          <span className="text-[10px] text-purple-500 uppercase font-black">Orchestration Engine: Online</span>
+          <span className="text-[10px] text-purple-500 uppercase font-black">Online</span>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <button 
-          onClick={() => alert('Specialist Swarm Initialized')}
-          className="border border-zinc-800 p-8 text-left hover:bg-zinc-900 transition-all group"
-        >
-          <p className="text-[10px] text-zinc-500 uppercase mb-2">Portfolio Status</p>
-          <p className="text-xl font-bold group-hover:text-purple-400">Sovereign Active</p>
-        </button>
-
-        <button 
-          onClick={() => alert('Context Engine: Analyzing Placeholders')}
-          className="border border-zinc-800 p-8 text-left hover:bg-zinc-900 transition-all group"
-        >
-          <p className="text-[10px] text-zinc-500 uppercase mb-2">Next Stage</p>
-          <p className="text-xl font-bold group-hover:text-blue-400">Discovery Phase</p>
-        </button>
-      </div>
-
-      <div className="mt-12 bg-zinc-950 border border-zinc-900 p-6 min-h-[300px]">
-        <p className="text-zinc-700 text-[10px] uppercase font-black mb-4">Live Tactical Feed</p>
-        <p className="text-zinc-400 italic">Waiting for operator input...</p>
+      <div className="bg-black border border-zinc-900 p-6 min-h-[400px] flex flex-col">
+        <div className="flex-1 overflow-y-auto mb-4 space-y-2 text-xs text-zinc-400">
+          {feed.map((line, i) => (
+            <p key={i} className={line.startsWith('>') ? 'text-purple-400' : ''}>{line}</p>
+          ))}
+        </div>
+        
+        <form onSubmit={handleCommand} className="flex gap-2 border-t border-zinc-900 pt-4">
+          <span className="text-purple-500 font-bold">{'>'}</span>
+          <input 
+            autoFocus
+            type="text" 
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            className="flex-1 bg-transparent outline-none text-sm text-white placeholder-zinc-700"
+            placeholder="TYPE DIRECTIVE..."
+          />
+        </form>
       </div>
     </div>
   );
